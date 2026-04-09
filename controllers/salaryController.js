@@ -2,7 +2,7 @@ const Salary = require('../models/Salary');
 
 exports.getSalaries = async (req, res) => {
     try {
-        const salaries = await Salary.find({ user: req.user.id });
+        const salaries = await Salary.find({ user: req.user.id }).sort({ _id: -1 });
         res.status(200).json(salaries);
     } catch (error) {
         res.status(500).json({ message: error.message });

@@ -2,7 +2,7 @@ const Password = require('../models/Password');
 
 exports.getPasswords = async (req, res) => {
     try {
-        const passwords = await Password.find({ user: req.user.id });
+        const passwords = await Password.find({ user: req.user.id }).sort({ _id: -1 });
         res.status(200).json(passwords);
     } catch (error) {
         res.status(500).json({ message: error.message });
